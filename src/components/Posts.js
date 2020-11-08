@@ -3,6 +3,7 @@ import { List,Card, Spin } from 'antd';
 import { Link } from 'react-router-dom';
 //import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
+import {Popover} from 'antd';
 
 const Posts = ({newsPosts,loading}) =>{
     if(loading){
@@ -27,6 +28,7 @@ const Posts = ({newsPosts,loading}) =>{
     dataSource={newsPosts}
     renderItem={item => (
       <List.Item>
+        <Popover content={item.title} title={item.source.name} trigger="hover">
         <Card 
          hoverable
          style={{ width: 240 }}
@@ -36,6 +38,7 @@ const Posts = ({newsPosts,loading}) =>{
         <Link to="./CardDetails"><Meta title={item.title} description={item.description} />
         </Link>
         </Card>
+        </Popover>
       </List.Item>
     )}
   />
