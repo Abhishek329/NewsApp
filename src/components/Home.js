@@ -17,7 +17,7 @@ const Home = () =>{
     useEffect(() =>{
       const getPosts = async () =>{
         setLoading(true);
-        const res = await axios.get('https://newsapi.org/v2/everything?domains=thenextweb.com,bbc.com,businessinsider.com&pageSize=100&apiKey=c8fbc66687ed4ac6b007b3244da6af98');
+        const res = await axios.get('https://newsapi.org/v2/everything?domains=thenextweb.com,bbc.com,businessinsider.com&language=en&pageSize=100&apiKey=c8fbc66687ed4ac6b007b3244da6af98');
         setPosts(res.data.articles);
         setLoading(false);
       } 
@@ -30,8 +30,6 @@ const Home = () =>{
     const currentPosts = posts.slice(indexOfFirstPost,indexOfLastPost);
     const paginate = pageNumber => setCurrentPage(pageNumber);
   
-    console.log("News Posts",posts);
-
     return (
         <div className ="container mt-5">
           <h1 className="text-primary mb-3">All News</h1>
